@@ -188,6 +188,15 @@ export default class SystemSetting {
         SystemSettingNative.switchAirplane()
     }
 
+    static async androidAreSoftKeysVisible() {
+        switch(Platform.OS) {
+            case 'android': 
+                return await SystemSettingNative.softKeysVisible()
+            default:
+                throw new Error('only available on android')
+        }
+    }
+
     static async openAppSystemSettings() {
         switch(Platform.OS) {
             case 'ios': {
